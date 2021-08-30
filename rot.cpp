@@ -2,7 +2,7 @@
 #include <string>
 #include <sstream>
 
-const int alphabet_english_length = 26;
+#define ALPHABET_ENGLISH_LENGTH 26
 
 const char alphabet_english_upper[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
 // [65..90]
@@ -14,11 +14,11 @@ char get_char(int rot, char c)
     int ord = c;
     if ((ord >= 65) && (ord <= 90))
     {
-        return alphabet_english_upper[(ord - 65 + rot) % alphabet_english_length];
+        return alphabet_english_upper[(ord - 65 + rot) % ALPHABET_ENGLISH_LENGTH];
     }
     else if ((ord >= 97) && (ord <= 122))
     {
-        return alphabet_english_lower[(ord - 97 + rot) % alphabet_english_length];
+        return alphabet_english_lower[(ord - 97 + rot) % ALPHABET_ENGLISH_LENGTH];
     }
     else
     {
