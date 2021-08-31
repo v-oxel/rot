@@ -9,6 +9,9 @@ You can use compiled program with command line arguments:
 ```sh
 rot 13 "hello world"
 ```
+```sh
+rot "hello world"
+```
 And without command line arguments:
 ```sh
 rot
