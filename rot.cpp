@@ -26,11 +26,19 @@ char get_char(int rot, char c)
     }
 }
 
+std::string get_output(int rot, std::string input)
+{
+    std::string result = "";
+    for (int i = 0; i < input.size(); i++)
+        result += get_char(rot, input[i]);
+    return result;
+}
+
 int main(int argc, char const *argv[])
 {
-    if ((argc != 1) && (argc != 3))
+    if (argc > 3)
     {
-        std::cout << "Invalid number of parameters \n";
+        std::cout << "Invalid number of parameters\nUsage: rot [N] [INPUT] to get ROT-N of input\n       rot [INPUT] to get all ROTs of input\n";
         return -1;
     }
 
@@ -45,16 +53,18 @@ int main(int argc, char const *argv[])
         std::cout << "input >> ";
         getline(std::cin, input);
     }
+    else if (argc == 2)
+    {
+        for (int i = 0; i < 26; i++)
+            std::cout << "ROT" << i << (i < 10 ? "   " : "  ") << get_output(i, argv[1]) << '\n';
+    }
     else
     {
         std::stringstream ss(argv[1]);
         ss >> rot;
         input = argv[2];
+        std::cout << get_output(rot, input) << '\n';
     }
-
-    for (int i = 0; i < input.size(); i++)
-        std::cout << get_char(rot, input[i]);
-    std::cout << '\n';
 
     return 0;
 }
